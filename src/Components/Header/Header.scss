@@ -1,0 +1,37 @@
+header {
+    background-color: gray;
+    height: 75px;
+    width: 80vw;
+    margin: 25px auto;
+    border-bottom: 1px solid black;
+}
+
+.header-logo {
+    display: inline-flex;
+}
+
+.header-nav {
+    display: flex;
+    height: 100%;
+    width: auto;
+    float: right;
+    margin: 25px 100px 0 0;
+
+    .header-nav-buttons {
+        display: inline-flex;
+        width: 125px;
+        height: 50px;
+    }
+
+    button {
+        background-color: inherit;
+        margin: 0;
+        border: none;
+        font-size: 18px;
+        width: 100%;
+
+        &:hover {
+            filter:contrast(0.25);
+        }
+    }
+}
