@@ -1,7 +1,13 @@
+import { useDispatch } from 'react-redux';
 import './Header.scss';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   const homeClick = () => {};
+  const aboutButtonClick = () => {
+    dispatch({ type: 'SHOW_ABOUT_MODAL', showAboutModal: true });
+  };
 
   return (
     <header>
@@ -19,7 +25,7 @@ const Header = () => {
         </div>
 
         <div className="header-nav-buttons">
-          <button type="button" onClick={homeClick}>
+          <button type="button" onClick={aboutButtonClick}>
             About
           </button>
         </div>
