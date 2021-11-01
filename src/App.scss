@@ -1,13 +1,14 @@
 @import './Colors.scss';
 
 .App {
+    @include color-theme('background-color', 'html-background');
     text-align: center;
     position: relative;
 }
 
 .content {
     display: grid;
-    grid-template-rows: 75px 750px;
+    grid-template-rows: 100px 750px;
     height: 100vh;
 }
 

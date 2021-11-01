@@ -5,21 +5,24 @@ header {
 
     display: flex;
     position: sticky;
-    height: 75px;
+    height: 100px;
     width: 100%;
-    margin: 25px auto;
+    margin: 0 auto;
     border-bottom: 1px solid;
+    justify-content: space-evenly;
 }
 
 .header-logo {
-    display: inline-flex;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 200px;
 }
 
 .header-nav {
     display: flex;
     height: 100%;
-    width: auto;
-    float: right;
+    width: 500px;
     align-items: end;
 
     .header-nav-buttons {

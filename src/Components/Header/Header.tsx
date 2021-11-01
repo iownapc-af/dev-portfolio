@@ -16,6 +16,8 @@ const Header = () => {
   return (
     <header>
       <div className="header-logo">LOGO</div>
+
+      {/* put navigation into a component at some point */}
       <div className="header-nav">
         <div className="header-nav-buttons">
           <button type="button" onClick={homeClick}>
