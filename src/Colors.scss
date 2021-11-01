@@ -1,0 +1,22 @@
+$themes: (
+  dark: (
+    html-background: #002b36,
+    body-background: #415057,
+    modal-background: gray,
+    bg-transparent: transparent,
+    header-border: #2aa198,
+    header-border-hover: orange,
+
+  ),
+  different-dark: (
+    body-background: #1c292f,
+  ),
+);
+
+@mixin color-theme($key, $color) {
+  @each $theme-name, $theme-color in $themes {
+    .theme-#{$theme-name} & {
+      #{$key}: map-get(map-get($themes, $theme-name), $color);
+    }
+  }
+}

@@ -7,10 +7,14 @@ import HomePage from './Pages/HomePage/HomePage';
 const App = () => {
   return (
     <>
-      <Header />
-      <HomePage />
-      <AboutModal />
-      <ContactModal />
+      <div className="App">
+        <div className="content">
+          <Header />
+          <HomePage />
+        </div>
+        <AboutModal />
+        <ContactModal />
+      </div>
     </>
   );
 };

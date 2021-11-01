@@ -1,5 +1,26 @@
+@import '../../Colors.scss';
+
 .about-modal-wrapper {
-    margin: 0 auto;
-    width: 50vw;
-    height: 50vh;
+    @include color-theme('background-color', 'modal-background');
+
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.close-modal-button {
+    @include color-theme('background-color', 'bg-transparent');
+
+    margin: 5px;
+    float: right;
+    border: none;
+
+    img {
+        transform: scale(1.5);
+    }
 }

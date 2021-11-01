@@ -1,0 +1,69 @@
+.Carousel-wrapper {
+    position: relative;
+    min-width: 875px;
+    width: 74vw;
+    height: 720px;
+    margin-left: 15px;
+    overflow: auto hidden;
+}
+.carousel {
+    display: grid;
+    grid-template-columns: auto 140px;
+    width: 1430px;
+    height: 750px;
+}
+
+.slider {
+    display: flex;
+    flex-direction: column;
+    min-width: 800px;
+    overflow: hidden;
+}
+
+.slide--contents {
+    display: block;
+
+    img {
+        width: 1280px;
+        height: 720px;
+        object-fit: fill;
+    }
+}
+
+.focusRing___1airF {
+    /* Outline on slides
+       Dont touch        */
+    display: none;      
+}
+
+.dot {
+    background-color: transparent;
+    position: sticky;
+    right: -6px;
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+    
+    button { 
+        background-color: inherit;
+        border: none;
+        height: 86px;
+        width: 100%;
+
+        &:target {
+            background-color: transparent;
+        }
+    }
+
+    .dot-image-wrapper {
+        width: 100%;
+        height: 80px;
+        background-color: transparent;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+        }
+    }
+}

@@ -9,6 +9,10 @@ const Header = () => {
     dispatch({ type: 'SHOW_ABOUT_MODAL', showAboutModal: true });
   };
 
+  const contactButtonClick = () => {
+    dispatch({ type: 'SHOW_CONTACT_MODAL', showContactModal: true });
+  };
+
   return (
     <header>
       <div className="header-logo">LOGO</div>
@@ -30,7 +34,7 @@ const Header = () => {
           </button>
         </div>
         <div className="header-nav-buttons">
-          <button type="button" onClick={homeClick}>
+          <button type="button" onClick={contactButtonClick}>
             Contact
           </button>
         </div>

@@ -1,9 +1,14 @@
+@import '../../Colors.scss';
+
 header {
+    @include color-theme('border-color', 'header-border');
+
+    display: flex;
+    position: sticky;
     height: 75px;
-    min-width: 700px;
-    width: 65vw;
+    width: 100%;
     margin: 25px auto;
-    border-bottom: 1px solid #2aa198;    
+    border-bottom: 1px solid;
 }
 
 .header-logo {
@@ -24,16 +29,19 @@ header {
     }
 
     button {
+        @include color-theme('color', 'header-border');
+        
         background-color: inherit;
-        color: #2aa198;
         margin: 0;
         border: none;
         font-size: 18px;
         width: 100%;
 
         &:hover {
-            border-bottom: 2px solid orange;
-            color: orange;
+            @include color-theme('border-color', 'header-border-hover');
+            @include color-theme('color', 'header-border-hover');
+
+            border-bottom: 2px solid;
         }
     }
 }

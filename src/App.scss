@@ -1,4 +1,36 @@
-body {
-    // background-color: #1c292f;
-    background-color: #002b36;
+@import './Colors.scss';
+
+.App {
+    text-align: center;
+    position: relative;
+}
+
+.content {
+    display: grid;
+    grid-template-rows: 75px 750px;
+    height: 100vh;
+}
+
+html {
+    ::-webkit-scrollbar {
+        color: #2aa198;
+       
+        border-radius: 5px;
+        width: 10px;
+        height: 7px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background-color: #2aa198;
+    
+        border-radius: 5px;
+        height: 7px;
+    }
+    ::-webkit-scrollbar-corner {background-color: transparent;}
+
+    scrollbar-color: #2aa198 transparent;
+}
+
+button {
+    cursor: pointer;
 }

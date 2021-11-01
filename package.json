@@ -10,10 +10,13 @@
     "eslint": "^7.29.0",
     "node-sass": "^6.0.1",
     "npm-force-resolutions": "0.0.10",
+    "pure-react-carousel": "^1.27.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-parallax-tilt": "^1.5.73",
     "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
+    "react-tilt": "^0.1.4",
     "redux": "^4.1.0",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
@@ -21,7 +24,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
     "format": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}'",
-    "start": "react-scripts start",
+    "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

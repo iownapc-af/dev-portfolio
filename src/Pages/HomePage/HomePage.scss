@@ -1,15 +1,22 @@
-main {
-    // color: white;
-    background-color: #415057;
-    height: 80vh;
-    width: 80vw;
-    margin: 0 auto;
-    overflow: hidden;
+@import '../../Colors.scss';
+
+.homepage {
+    @include color-theme('background-color', 'html-background');
+    width: 100vw;
 }
 
 .content-wrapper {
-    display: flex;
-    flex-direction: column;
+    @include color-theme('background-color', 'body-background');
+
+    height: 750px;
+    width: 76vw;
+    min-width: 900px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-content: space-evenly;
+
     align-items: center;
     position: relative;
 }
