@@ -1,14 +1,11 @@
 @import '../../Colors.scss';
 
 header {
-    @include color-theme('border-color', 'header-border');
-
     display: flex;
     position: sticky;
     height: 100px;
     width: 100%;
     margin: 0 auto;
-    border-bottom: 1px solid;
     justify-content: space-evenly;
 }
 
@@ -17,35 +14,4 @@ header {
     align-items: center;
     height: 100%;
     width: 200px;
-}
-
-.header-nav {
-    display: flex;
-    height: 100%;
-    width: 500px;
-    align-items: end;
-
-  .header-nav-buttons {
-    display: inline-flex;
-    width: 125px;
-    height: 50px;
-  }
-
-    button {
-        @include color-theme('color', 'header-border');
-        
-        background-color: inherit;
-        margin: 0;
-        border: none;
-        font-size: 18px;
-        width: 100%;
-
-        &:hover {
-            @include color-theme('border-color', 'header-border-hover');
-            @include color-theme('color', 'header-border-hover');
-
-            border-bottom: 2px solid;
-        }
-    }
-  }
 }

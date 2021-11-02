@@ -1,9 +1,12 @@
-@import './Colors.scss';
+@import "./Colors.scss";
 
 .App {
-    @include color-theme('background-color', 'html-background');
+    @include color-theme("background-color", "html-background");
     text-align: center;
     position: relative;
+
+    scrollbar-color: #2aa198 transparent;
+    scrollbar-width: thin;
 }
 
 .content {
@@ -12,24 +15,42 @@
     height: 100vh;
 }
 
-html {
-    ::-webkit-scrollbar {
-        color: #2aa198;
-       
-        border-radius: 5px;
-        width: 10px;
-        height: 7px;
-    }
-    
-    ::-webkit-scrollbar-thumb {
-        background-color: #2aa198;
-    
-        border-radius: 5px;
-        height: 7px;
-    }
-    ::-webkit-scrollbar-corner {background-color: transparent;}
+.wrapper {
+    @include color-theme("background-color", "body-background");
 
-    scrollbar-color: #2aa198 transparent;
+    height: 750px;
+    width: 76vw;
+    min-width: 900px;
+    margin: 0 auto;
+
+    justify-content: space-evenly;
+
+    align-items: center;
+    position: relative;
+    overflow: auto;
+}
+
+::-webkit-scrollbar {
+    color: #2aa198;
+
+    border-radius: 5px;
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #2aa198;
+
+    border-radius: 5px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #002b36;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
 }
 
 button {
