@@ -13,7 +13,7 @@
   }
 
     button {
-        @include color-theme('color', 'header-border');
+        @include color-theme('color', 'font-color');
         
         background-color: inherit;
         margin: 0;

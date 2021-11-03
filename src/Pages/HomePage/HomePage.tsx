@@ -1,3 +1,4 @@
+import Soteria from '../../Components/Portfolio/Soteria/Soteria';
 import './HomePage.scss';
 
 const HomePage = () => {

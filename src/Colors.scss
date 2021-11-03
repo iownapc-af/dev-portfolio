@@ -1,15 +1,21 @@
 $themes: (
   dark: (
-    html-background: #002b36,
-    body-background: #415057,
+    html-background: #415057,
+    body-background: #002b36,
     modal-background: gray,
     bg-transparent: transparent,
     header-border: #2aa198,
     header-border-hover: orange,
 
   ),
-  different-dark: (
-    body-background: #1c292f,
+  color-theory-is-fake: (
+    html-background: #212230,
+    body-background: #006c67,
+    modal-background: gray,
+    header-border-hover: #fa8334,
+    font-color: #f1f5f2,
+    font-color-2: #161720,
+    bg-transparent: transparent,
   ),
 );
 

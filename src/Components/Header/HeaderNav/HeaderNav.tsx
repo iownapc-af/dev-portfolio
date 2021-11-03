@@ -7,6 +7,7 @@ export const HeaderNav = () => {
 
   const tabSelection = (tab: Tab) => {
     dispatch({ type: 'SET_TAB_SELECTED', tabSelected: tab });
+    dispatch({ type: 'SET_SELECTED_PROJECT', selectedProject: null });
   };
 
   const aboutButtonClick = () => {

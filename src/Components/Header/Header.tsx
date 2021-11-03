@@ -4,9 +4,7 @@ import { HeaderNav } from './HeaderNav/HeaderNav';
 const Header = () => {
   return (
     <header>
-      <div className="header-logo">LOGO</div>
-
-      {/* put navigation into a component at some point */}
+      {/* <div className="header-logo">LOGO</div> */}
       <HeaderNav />
     </header>
   );

@@ -1,9 +1,8 @@
 import { useSelector } from 'react-redux';
-// import Tilt from 'react-parallax-tilt';
-import { AppState, useAppDispatch } from '../../Store/AppState';
-import CloseIcon from '../../res/close_icon.svg';
-// @ts-ignore
+import { AppState, useAppDispatch } from '../../../Store/AppState';
+import CloseIcon from '../../../res/close_icon.svg';
 import './AboutModal.scss';
+import '../ModalStyle.scss';
 
 const AboutModal = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +13,7 @@ const AboutModal = () => {
   };
 
   return showModal ? (
-    <div className="about-modal-wrapper">
+    <div className="modal-wrapper">
       <button className="close-modal-button" type="button" onClick={modalCloseClick}>
         <img src={CloseIcon} alt="" />
       </button>

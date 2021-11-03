@@ -26,7 +26,7 @@ const Soteria = () => {
   const renderSlides = () => {
     return images.map((image, index) => {
       return (
-        <Slide index={index} key="">
+        <Slide index={index} key={`slide ${index.toString()}`}>
           <div className="slide--contents">
             <img src={image} alt="" />
           </div>
@@ -38,11 +38,11 @@ const Soteria = () => {
   const renderDots = () => {
     return images.map((image, index) => {
       return (
-        <Dot slide={index} key="">
+        <Dot slide={index} key={`slide ${index.toString()}`}>
           <Tilt
             className="Tilt"
             tiltReverse={true}
-            perspective={800}
+            perspective={700}
             glareEnable={true}
             glareMaxOpacity={0}
           >
@@ -56,18 +56,21 @@ const Soteria = () => {
   };
 
   return (
-    <div className="Carousel-wrapper">
-      <CarouselProvider
-        visibleSlides={1}
-        totalSlides={8}
-        naturalSlideWidth={1220}
-        naturalSlideHeight={690}
-        dragEnabled={false}
-      >
-        <Slider>{renderSlides()}</Slider>
-        <div className="dot">{renderDots()}</div>
-      </CarouselProvider>
-    </div>
+    <>
+      <div className="Carousel-wrapper">
+        <CarouselProvider
+          visibleSlides={1}
+          totalSlides={8}
+          naturalSlideWidth={1220}
+          naturalSlideHeight={690}
+          dragEnabled={false}
+        >
+          <Slider>{renderSlides()}</Slider>
+          <div className="dot">{renderDots()}</div>
+        </CarouselProvider>
+      </div>
+      <div className="project-desc">Typyscripty</div>
+    </>
   );
 };
 

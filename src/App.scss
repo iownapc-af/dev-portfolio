@@ -2,6 +2,8 @@
 
 .App {
     @include color-theme("background-color", "html-background");
+    @include color-theme("color", "font-color");
+    
     text-align: center;
     position: relative;
 
@@ -11,17 +13,18 @@
 
 .content {
     display: grid;
-    grid-template-rows: 100px 750px;
+    grid-template-rows: 50px auto;
     height: 100vh;
 }
 
 .wrapper {
     @include color-theme("background-color", "body-background");
 
-    height: 750px;
+    height: 100%;
     width: 76vw;
     min-width: 900px;
     margin: 0 auto;
+    border-radius: 8px 8px 0 0;
 
     justify-content: space-evenly;
 

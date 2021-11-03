@@ -1,6 +1,6 @@
 @import '../../Colors.scss';
 
-.about-modal-wrapper {
+.modal-wrapper {
     @include color-theme('background-color', 'modal-background');
 
     position: absolute;

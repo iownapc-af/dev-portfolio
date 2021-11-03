@@ -1,7 +1,7 @@
 .Carousel-wrapper {
     position: relative;
     min-width: 875px;
-    width: 74vw;
+    width: 75vw;
     height: 720px;
     margin-left: 15px;
     overflow: auto hidden;
@@ -43,6 +43,7 @@
     display: flex;
     flex-direction: column;
     width: 140px;
+    backdrop-filter: blur(4px) opacity(50%);
     
     button { 
         background-color: inherit;
