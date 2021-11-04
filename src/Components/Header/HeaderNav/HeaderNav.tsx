@@ -10,14 +10,6 @@ export const HeaderNav = () => {
     dispatch({ type: 'SET_SELECTED_PROJECT', selectedProject: null });
   };
 
-  const aboutButtonClick = () => {
-    dispatch({ type: 'SHOW_ABOUT_MODAL', showAboutModal: true });
-  };
-
-  const contactButtonClick = () => {
-    dispatch({ type: 'SHOW_CONTACT_MODAL', showContactModal: true });
-  };
-
   return (
     <div className="header-nav">
       <div className="header-nav-buttons">
@@ -42,12 +34,12 @@ export const HeaderNav = () => {
       </div>
 
       <div className="header-nav-buttons">
-        <button type="button" onClick={aboutButtonClick}>
+        <button type="button" onClick={() => {}}>
           About
         </button>
       </div>
       <div className="header-nav-buttons">
-        <button type="button" onClick={contactButtonClick}>
+        <button type="button" onClick={() => {}}>
           Contact
         </button>
       </div>

@@ -3,7 +3,7 @@
     min-width: 875px;
     width: 75vw;
     height: 720px;
-    margin-left: 15px;
+    margin: 55px auto auto 15px;
     overflow: auto hidden;
 }
 .carousel {
@@ -40,6 +40,7 @@
     background-color: transparent;
     position: sticky;
     right: -6px;
+    margin-top: 12px;
     display: flex;
     flex-direction: column;
     width: 140px;

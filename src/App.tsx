@@ -1,8 +1,6 @@
 import { useSelector } from 'react-redux';
 import { AppState } from '.';
 import './App.scss';
-import AboutModal from './Components/Modals/About/AboutModal';
-import ContactModal from './Components/Modals/Contact/ContactModal';
 import Header from './Components/Header/Header';
 import HomePage from './Pages/HomePage/HomePage';
 import Portfolio from './Pages/Portfolio/Portfolio';
@@ -17,8 +15,6 @@ const App = () => {
           <Header />
           <div className="wrapper">{tabSelected === 'home' ? <HomePage /> : <Portfolio />}</div>
         </div>
-        <AboutModal />
-        <ContactModal />
       </div>
     </>
   );
