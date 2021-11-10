@@ -3,10 +3,9 @@
     flex-direction: column;
     width: 600px;
     height: auto;
-    margin: 50px auto;
+    margin: 50px auto 25px auto;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
-    cursor: none;
 }
 
 .gridsquare {
@@ -16,6 +15,8 @@
     text-align: center;
     align-items: center;
     justify-content: space-around;
+    font-size: 11px;
+    line-height: 12px;
 }
 
 .gridRow {
@@ -26,20 +27,55 @@
     background-color: black;
 }
 
-.empty:hover {
-    background-color: white;
+.door {
+    background-color: green;
 }
 
 .player {
     &::before {
         position: absolute;
         transform: translateX(-50%);
-        font-size: 11px;
-        line-height: 12px;
         content: '😑';
     }
 
     &:hover {
         background-color: black;
     }
+
+    &.north {
+        // transform: scaleY(0.9) translateY(-2px) rotateX(-30deg);
+        transform: rotateZ(180deg);
+
+    }
+
+    &.south {
+        // transform: scaleY(0.9) translateY(2px) rotateX(30deg);
+
+    }
+
+    &.east {
+        // transform: scaleX(0.9) translateX(2px);
+        transform: rotateZ(270deg);
+
+    }
+
+    &.west {
+        // transform: scaleX(0.9) translateX(-2px);
+        transform: rotateZ(90deg);
+
+    }
+}
+
+.attac {
+    &::before {
+        position: absolute;
+        transform: translateX(-50%);
+        content: '🗡';
+    }
+}
+
+.ui {
+    background-color: transparent;
+    display: flex;
+    justify-content: space-evenly;
 }

@@ -1,4 +1,5 @@
 import { Tab } from '../types/Tab';
+import { PlayerDirection } from '../types/PlayerAction';
 import { Action } from './action';
 
 interface State {
@@ -9,6 +10,7 @@ interface State {
 
   player: {
     playerCoords: [number, number];
+    playerDirection: PlayerDirection;
   };
 }
 
@@ -19,10 +21,17 @@ export const defaultState: State = {
   map: [
     '##################################################'.split(''),
     '#                                                #'.split(''),
-    '#                     #                          #'.split(''),
-    '#   ####                                         #'.split(''),
+    '#   #######           #                          #'.split(''),
+    '#   #     #    #                                 #'.split(''),
+    '#   #     #                                      #'.split(''),
+    '#   ###:###    #                                 #'.split(''),
     '#                                                #'.split(''),
-    '#              #                                 #'.split(''),
+    '#                                                #'.split(''),
+    '#                        :                       #'.split(''),
+    '#                                                #'.split(''),
+    '#                                                #'.split(''),
+    '#                                                #'.split(''),
+    '#                                                #'.split(''),
     '#                                                #'.split(''),
     '#                                                #'.split(''),
     '#                                                #'.split(''),
@@ -30,7 +39,8 @@ export const defaultState: State = {
   ],
 
   player: {
-    playerCoords: [5, 5],
+    playerCoords: [2, 2],
+    playerDirection: 'south',
   },
 };
 
@@ -50,8 +60,24 @@ export const Reducer = (state: State = defaultState, action: Action): State => {
     case 'UPDATE_PLAYER_COORDS':
       return {
         ...state,
-        player: { playerCoords: action.updatePlayerCoords },
+        player: {
+          playerCoords: action.updatePlayerCoords,
+          playerDirection: state.player.playerDirection,
+        },
       };
+    case 'UPDATE_PLAYER_DIRECTION':
+      return {
+        ...state,
+        player: {
+          playerCoords: state.player.playerCoords,
+          playerDirection: action.updatePlayerDirection,
+        },
+      };
+    case 'UPDATE_MAP':
+      return {
+        ...state,
+        map: action.updateMap
+      }
     default:
       return state;
   }

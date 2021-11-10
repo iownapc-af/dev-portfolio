@@ -1,34 +1,50 @@
 // import { Map } from 'typescript';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { AppState } from '../../..';
 import { useAppDispatch, useAppSelector } from '../../../Store/AppState';
+import { PlayerDirection } from '../../../types/PlayerAction';
 import './Porjec 2.scss';
 
+export type Directions = 'north' | 'south' | 'east' | 'west';
+
 const Porjec2 = () => {
-  // const dispatch = useAppDispatch();
   // const playerCoord = useAppSelector((state: AppState) => state.player.playerCoords);
+  const dispatch = useAppDispatch();
   const tempGameMap = useAppSelector((state: AppState) => state.map);
-  const [playerCoord, setPlayerCoord] = useState<number[]>([5, 5]);
+  const player = useAppSelector((state: AppState) => state.player);
 
   useEffect(() => {
-    document.addEventListener('keydown', SHMOOOVING, false);
+    document.addEventListener('keydown', inputHandler, false);
     return () => {
-      document.removeEventListener('keydown', SHMOOOVING, false);
+      document.removeEventListener('keydown', inputHandler, false);
     };
   });
 
-  const gridsquare = (gridclass: string) => {
-    return <div className={`gridsquare ${gridclass}`}> </div>;
+  const gridsquare = (gridclass: string, indexX: number, indexY: number) => {
+    return (
+      <div
+        className={`gridsquare ${gridclass} ${player.playerDirection}`}
+        id={`${indexX},${indexY}`}
+      >
+        {' '}
+      </div>
+    );
   };
 
   const mapGridType = (indexY: number, indexX: number) => {
-    if (indexY === playerCoord[0] && indexX === playerCoord[1]) return gridsquare('player');
+    if (indexY === player.playerCoords[0] && indexX === player.playerCoords[1]) {
+      return gridsquare('player', indexX, indexY);
+    }
 
     switch (tempGameMap[indexX][indexY]) {
       case '#':
-        return gridsquare('wall');
+        return gridsquare('wall', indexX, indexY);
       case ' ':
-        return gridsquare('empty');
+        return gridsquare('empty', indexX, indexY);
+      case ':':
+        return gridsquare('door', indexX, indexY);
+      case '-':
+        return gridsquare('attac', indexX, indexY);
     }
   };
 
@@ -49,34 +65,82 @@ const Porjec2 = () => {
     );
   };
 
-  const SHMOOOVING = (key: KeyboardEvent) => {
+  const moveDirection: { [K in PlayerDirection]: { tile: string; coord: string } } = {
+    north: {
+      tile: tempGameMap[player.playerCoords[1] - 1][player.playerCoords[0]],
+      coord: `${player.playerCoords[1] - 1},${player.playerCoords[0]}`,
+    },
+    south: {
+      tile: tempGameMap[player.playerCoords[1] + 1][player.playerCoords[0]],
+      coord: `${player.playerCoords[1] + 1},${player.playerCoords[0]}`,
+    },
+    west: {
+      tile: tempGameMap[player.playerCoords[1]][player.playerCoords[0] - 1],
+      coord: `${player.playerCoords[1]},${player.playerCoords[0] - 1}`,
+    },
+    east: {
+      tile: tempGameMap[player.playerCoords[1]][player.playerCoords[0] + 1],
+      coord: `${player.playerCoords[1]},${player.playerCoords[0] + 1}`,
+    },
+  };
+
+  const inputHandler = (key: KeyboardEvent) => {
     if (tempGameMap) {
       switch (key.key) {
         case 'w':
-          if (tempGameMap[playerCoord[1] - 1][playerCoord[0]] === ' ') {
-            setPlayerCoord([playerCoord[0], playerCoord[1] - 1]);
+          dispatch({ type: 'UPDATE_PLAYER_DIRECTION', updatePlayerDirection: 'north' });
+          if (moveDirection.north.tile === ' ') {
+            dispatch({
+              type: 'UPDATE_PLAYER_COORDS',
+              updatePlayerCoords: [player.playerCoords[0], player.playerCoords[1] - 1],
+            });
           }
           break;
         case 's':
-          if (tempGameMap[playerCoord[1] + 1][playerCoord[0]] === ' ') {
-            setPlayerCoord([playerCoord[0], playerCoord[1] + 1]);
+          dispatch({ type: 'UPDATE_PLAYER_DIRECTION', updatePlayerDirection: 'south' });
+          if (moveDirection.south.tile === ' ') {
+            dispatch({
+              type: 'UPDATE_PLAYER_COORDS',
+              updatePlayerCoords: [player.playerCoords[0], player.playerCoords[1] + 1],
+            });
           }
           break;
         case 'a':
-          if (tempGameMap[playerCoord[1]][playerCoord[0] - 1] === ' ') {
-            setPlayerCoord([playerCoord[0] - 1, playerCoord[1]]);
+          dispatch({ type: 'UPDATE_PLAYER_DIRECTION', updatePlayerDirection: 'west' });
+          if (moveDirection.west.tile === ' ') {
+            dispatch({
+              type: 'UPDATE_PLAYER_COORDS',
+              updatePlayerCoords: [player.playerCoords[0] - 1, player.playerCoords[1]],
+            });
           }
           break;
         case 'd':
-          if (tempGameMap[playerCoord[1]][playerCoord[0] + 1] === ' ') {
-            setPlayerCoord([playerCoord[0] + 1, playerCoord[1]]);
+          dispatch({ type: 'UPDATE_PLAYER_DIRECTION', updatePlayerDirection: 'east' });
+          if (moveDirection.east.tile === ' ') {
+            dispatch({
+              type: 'UPDATE_PLAYER_COORDS',
+              updatePlayerCoords: [player.playerCoords[0] + 1, player.playerCoords[1]],
+            });
           }
+          break;
+        case ' ':
+          // document.getElementById(moveDirection[player.playerDirection].coord);
           break;
       }
     }
   };
 
-  return <div className="gameMap">{drawMap()}</div>;
+  return (
+    <>
+      <div className="gameMap">{drawMap()}</div>
+      <div className="ui">
+        <span>
+          Coordinates: ({player.playerCoords[0]}, {player.playerCoords[1]})
+        </span>
+        <span>Direction: {player.playerDirection}</span>
+      </div>
+    </>
+  );
 };
 
 export default Porjec2;

@@ -1,1 +1,1 @@
-export type PlayerAction = 'w' | 'a' | 's' | 'd' | 'esc';
+export type PlayerDirection = 'north' | 'west' | 'south' | 'east';
