@@ -4,11 +4,34 @@ import { Action } from './action';
 interface State {
   tabSelected: Tab;
   selectedProject: string | null;
+
+  map: string[][];
+
+  player: {
+    playerCoords: [number, number];
+  };
 }
 
 export const defaultState: State = {
-  tabSelected: 'home',
-  selectedProject: null,
+  tabSelected: 'portfolio',
+  selectedProject: 'porjec 2',
+
+  map: [
+    '##################################################'.split(''),
+    '#                                                #'.split(''),
+    '#                     #                          #'.split(''),
+    '#   ####                                         #'.split(''),
+    '#                                                #'.split(''),
+    '#              #                                 #'.split(''),
+    '#                                                #'.split(''),
+    '#                                                #'.split(''),
+    '#                                                #'.split(''),
+    '##################################################'.split(''),
+  ],
+
+  player: {
+    playerCoords: [5, 5],
+  },
 };
 
 // eslint-disable-next-line @typescript-eslint/default-param-last
@@ -23,6 +46,11 @@ export const Reducer = (state: State = defaultState, action: Action): State => {
       return {
         ...state,
         selectedProject: action.selectedProject,
+      };
+    case 'UPDATE_PLAYER_COORDS':
+      return {
+        ...state,
+        player: { playerCoords: action.updatePlayerCoords },
       };
     default:
       return state;

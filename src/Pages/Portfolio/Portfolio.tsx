@@ -1,3 +1,4 @@
+import Porjec2 from '../../Components/Portfolio/Porjec 2/Porjec 2';
 import Soteria from '../../Components/Portfolio/Soteria/Soteria';
 import { AppState, useAppDispatch, useAppSelector } from '../../Store/AppState';
 import { Project } from '../../types/Tab';
@@ -11,16 +12,19 @@ const Portfolio = () => {
     dispatch({ type: 'SET_SELECTED_PROJECT', selectedProject: projectName });
   };
 
-  // const displayProject = () => {
-  //   console.log('test')
-  // };
+  const displayProject = () => {
+    switch (selectedProject) {
+      case 'soteria':
+        return <Soteria />;
+      case 'porjec 2':
+        return <Porjec2 />;
+    }
+  };
 
   return (
     <>
       {selectedProject ? (
-        <>
-          <Soteria />
-        </>
+        <>{displayProject()}</>
       ) : (
         <>
           <h1 className="p">Projects :-O</h1>
@@ -54,7 +58,7 @@ const Portfolio = () => {
                   className="project-name"
                   type="button"
                   onClick={() => {
-                    projectPageClick('soteria');
+                    projectPageClick('porjec 2');
                   }}
                 >
                   PORJEC 2
@@ -76,7 +80,7 @@ const Portfolio = () => {
                   className="project-name"
                   type="button"
                   onClick={() => {
-                    projectPageClick('soteria');
+                    projectPageClick('porky-mon');
                   }}
                 >
                   porky-mon

@@ -52,7 +52,7 @@
     "max-len": [
       "warn",
       {
-        "code": 100,
+        "code": 400,
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true,
         "ignoreComments": true

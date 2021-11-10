@@ -1,0 +1,45 @@
+.gameMap {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: auto;
+    margin: 50px auto;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: none;
+}
+
+.gridsquare {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    text-align: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.gridRow {
+    display: flex;
+}
+
+.wall {
+    background-color: black;
+}
+
+.empty:hover {
+    background-color: white;
+}
+
+.player {
+    &::before {
+        position: absolute;
+        transform: translateX(-50%);
+        font-size: 11px;
+        line-height: 12px;
+        content: '😑';
+    }
+
+    &:hover {
+        background-color: black;
+    }
+}
