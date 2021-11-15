@@ -21,11 +21,14 @@ const Porjec2 = () => {
   });
 
   const gridsquare = (gridclass: string, indexX: number, indexY: number) => {
+    let classString = gridclass;
+
+    if (gridclass === 'player') {
+      classString = `${gridclass} ${player.playerDirection}`;
+    }
+
     return (
-      <div
-        className={`gridsquare ${gridclass} ${player.playerDirection}`}
-        id={`${indexX},${indexY}`}
-      >
+      <div className={`gridsquare ${classString}`} id={`${indexX},${indexY}`}>
         {' '}
       </div>
     );
@@ -65,6 +68,18 @@ const Porjec2 = () => {
     );
   };
 
+  let timeoutID: NodeJS.Timeout;
+  const doAttac = () => {
+    const attackSquare = document.getElementById(moveDirection[player.playerDirection].coord);
+    attackSquare?.classList.add('attac', player.playerDirection);
+
+    clearTimeout(timeoutID);
+
+    timeoutID = setTimeout(() => {
+      attackSquare?.classList.remove('attac', player.playerDirection);
+    }, 150);
+  };
+
   const moveDirection: { [K in PlayerDirection]: { tile: string; coord: string } } = {
     north: {
       tile: tempGameMap[player.playerCoords[1] - 1][player.playerCoords[0]],
@@ -86,7 +101,7 @@ const Porjec2 = () => {
 
   const inputHandler = (key: KeyboardEvent) => {
     if (tempGameMap) {
-      switch (key.key) {
+      switch (key.key.toLowerCase()) {
         case 'w':
           dispatch({ type: 'UPDATE_PLAYER_DIRECTION', updatePlayerDirection: 'north' });
           if (moveDirection.north.tile === ' ') {
@@ -124,7 +139,7 @@ const Porjec2 = () => {
           }
           break;
         case ' ':
-          // document.getElementById(moveDirection[player.playerDirection].coord);
+          doAttac();
           break;
       }
     }

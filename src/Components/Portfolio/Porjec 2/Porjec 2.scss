@@ -48,11 +48,6 @@
 
     }
 
-    &.south {
-        // transform: scaleY(0.9) translateY(2px) rotateX(30deg);
-
-    }
-
     &.east {
         // transform: scaleX(0.9) translateX(2px);
         transform: rotateZ(270deg);
@@ -68,10 +63,28 @@
 
 .attac {
     &::before {
-        position: absolute;
+        position: absolute;;
         transform: translateX(-50%);
         content: '🗡';
     }
+        &.north {
+            transform: rotateZ(135deg);
+    
+        }
+    
+        &.east {
+            transform: rotateZ(225deg);
+    
+        }
+
+        &.south {
+            transform: rotateZ(315deg);
+        }
+    
+        &.west {
+            transform: rotateZ(45deg);
+    
+        }
 }
 
 .ui {
