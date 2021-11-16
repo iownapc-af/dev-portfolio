@@ -104,11 +104,11 @@ const Porjec2 = () => {
 
   const doorCoords = [
     {
-      currentCoords: `${moveDirection[player.playerDirection].coord},${indexMap}`,
+      currentCoords: '5,7,0',
       newRoomIndex: 1,
     },
     {
-      currentCoords: `${moveDirection[player.playerDirection].coord},${indexMap}`,
+      currentCoords: `${moveDirection[player.playerDirection].coord},1`,
       newRoomIndex: 0,
     },
   ];
@@ -165,8 +165,11 @@ const Porjec2 = () => {
                 );
               })
               .map((e) => e.newRoomIndex);
-            console.log(door);
-            setIndexMap(door[1]);
+
+            if (door[0] !== undefined) {
+              setIndexMap(door[0]);
+            }
+
             /*
               choose a map to place the player on based on the coordinates of the door.
               also need to figure out how to draw different maps
