@@ -6,7 +6,8 @@ interface State {
   tabSelected: Tab;
   selectedProject: string | null;
 
-  map: string[][];
+  overworld: string[][][];
+  rooms: string[][][];
 
   player: {
     playerCoords: [number, number];
@@ -18,24 +19,81 @@ export const defaultState: State = {
   tabSelected: 'portfolio',
   selectedProject: 'porjec 2',
 
-  map: [
-    '##################################################'.split(''),
-    '#                                                #'.split(''),
-    '#   #######           #                          #'.split(''),
-    '#   #     #    #                                 #'.split(''),
-    '#   #     #                                      #'.split(''),
-    '#   ###:###    #                                 #'.split(''),
-    '#                                                #'.split(''),
-    '#                                                #'.split(''),
-    '#                        :                       #'.split(''),
-    '#                                                #'.split(''),
-    '#                                                #'.split(''),
-    '#                                                #'.split(''),
-    '#                                                #'.split(''),
-    '#                                                #'.split(''),
-    '#                                                #'.split(''),
-    '#                                                #'.split(''),
-    '##################################################'.split(''),
+  overworld: [
+    [
+      '##################################################'.split(''),
+      '#                                                #'.split(''),
+      '#   #######           #                          #'.split(''),
+      '#   #     #    #                                 #'.split(''),
+      '#   #     #                                      #'.split(''),
+      '#   ###:###    #                                 #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                        :                       #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '##################################################'.split(''),
+    ],
+    [
+      '##################################################'.split(''),
+      '#                                                #'.split(''),
+      '#   #######      #                               #'.split(''),
+      '#   #     #      ##                              #'.split(''),
+      '#   #     #      # #                             #'.split(''),
+      '#   ###:###      #  #                            #'.split(''),
+      '#                #   #                           #'.split(''),
+      '#                     #                          #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '##################################################'.split(''),
+    ],
+    [
+      '##################################################'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '#                                                #'.split(''),
+      '##################################################'.split(''),
+    ],
+  ],
+
+  rooms: [
+    [
+      '##########'.split(''),
+      '#        #'.split(''),
+      '# ##     #'.split(''),
+      '#        #'.split(''),
+      '####:#####'.split(''),
+    ],
+    [
+      '##########'.split(''),
+      '#     ## #'.split(''),
+      '#        #'.split(''),
+      '#        #'.split(''),
+      '##########'.split(''),
+    ],
   ],
 
   player: {
@@ -76,8 +134,8 @@ export const Reducer = (state: State = defaultState, action: Action): State => {
     case 'UPDATE_MAP':
       return {
         ...state,
-        map: action.updateMap
-      }
+        overworld: action.updateMap,
+      };
     default:
       return state;
   }

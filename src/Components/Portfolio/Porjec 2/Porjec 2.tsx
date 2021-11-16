@@ -1,5 +1,5 @@
 // import { Map } from 'typescript';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AppState } from '../../..';
 import { useAppDispatch, useAppSelector } from '../../../Store/AppState';
 import { PlayerDirection } from '../../../types/PlayerAction';
@@ -10,8 +10,9 @@ export type Directions = 'north' | 'south' | 'east' | 'west';
 const Porjec2 = () => {
   // const playerCoord = useAppSelector((state: AppState) => state.player.playerCoords);
   const dispatch = useAppDispatch();
-  const tempGameMap = useAppSelector((state: AppState) => state.map);
+  const tempGameMap = useAppSelector((state: AppState) => state.overworld);
   const player = useAppSelector((state: AppState) => state.player);
+  const [indexMap, setIndexMap] = useState(0);
 
   useEffect(() => {
     document.addEventListener('keydown', inputHandler, false);
@@ -20,7 +21,7 @@ const Porjec2 = () => {
     };
   });
 
-  const gridsquare = (gridclass: string, indexX: number, indexY: number) => {
+  const gridsquare = (gridclass: string, indexX: number, indexY: number, mapIndex: number) => {
     let classString = gridclass;
 
     if (gridclass === 'player') {
@@ -28,38 +29,38 @@ const Porjec2 = () => {
     }
 
     return (
-      <div className={`gridsquare ${classString}`} id={`${indexX},${indexY}`}>
+      <div className={`gridsquare ${classString}`} id={`${indexX},${indexY},${mapIndex}`}>
         {' '}
       </div>
     );
   };
 
-  const mapGridType = (indexY: number, indexX: number) => {
+  const mapGridType = (indexY: number, indexX: number, mapIndex: number) => {
     if (indexY === player.playerCoords[0] && indexX === player.playerCoords[1]) {
-      return gridsquare('player', indexX, indexY);
+      return gridsquare('player', indexX, indexY, mapIndex);
     }
 
-    switch (tempGameMap[indexX][indexY]) {
+    switch (tempGameMap[mapIndex][indexX][indexY]) {
       case '#':
-        return gridsquare('wall', indexX, indexY);
+        return gridsquare('wall', indexX, indexY, mapIndex);
       case ' ':
-        return gridsquare('empty', indexX, indexY);
+        return gridsquare('empty', indexX, indexY, mapIndex);
       case ':':
-        return gridsquare('door', indexX, indexY);
+        return gridsquare('door', indexX, indexY, mapIndex);
       case '-':
-        return gridsquare('attac', indexX, indexY);
+        return gridsquare('attac', indexX, indexY, mapIndex);
     }
   };
 
   const drawMap = () => {
     return (
       <>
-        {tempGameMap?.map((row, indexY) => {
+        {tempGameMap[indexMap]?.map((row, indexY) => {
           return (
             <div className="gridRow" key={`${indexY - 1} d`}>
               {/* {row.split('').map((column: unknown, indexX: number) => { */}
               {row.map((column: unknown, indexX: number) => {
-                return mapGridType(indexX, indexY);
+                return mapGridType(indexX, indexY, indexMap);
               })}
             </div>
           );
@@ -70,7 +71,9 @@ const Porjec2 = () => {
 
   let timeoutID: NodeJS.Timeout;
   const doAttac = () => {
-    const attackSquare = document.getElementById(moveDirection[player.playerDirection].coord);
+    const attackSquare = document.getElementById(
+      `${moveDirection[player.playerDirection].coord},${indexMap}`
+    );
     attackSquare?.classList.add('attac', player.playerDirection);
 
     clearTimeout(timeoutID);
@@ -82,22 +85,33 @@ const Porjec2 = () => {
 
   const moveDirection: { [K in PlayerDirection]: { tile: string; coord: string } } = {
     north: {
-      tile: tempGameMap[player.playerCoords[1] - 1][player.playerCoords[0]],
+      tile: tempGameMap[indexMap][player.playerCoords[1] - 1][player.playerCoords[0]],
       coord: `${player.playerCoords[1] - 1},${player.playerCoords[0]}`,
     },
     south: {
-      tile: tempGameMap[player.playerCoords[1] + 1][player.playerCoords[0]],
+      tile: tempGameMap[indexMap][player.playerCoords[1] + 1][player.playerCoords[0]],
       coord: `${player.playerCoords[1] + 1},${player.playerCoords[0]}`,
     },
     west: {
-      tile: tempGameMap[player.playerCoords[1]][player.playerCoords[0] - 1],
+      tile: tempGameMap[indexMap][player.playerCoords[1]][player.playerCoords[0] - 1],
       coord: `${player.playerCoords[1]},${player.playerCoords[0] - 1}`,
     },
     east: {
-      tile: tempGameMap[player.playerCoords[1]][player.playerCoords[0] + 1],
+      tile: tempGameMap[indexMap][player.playerCoords[1]][player.playerCoords[0] + 1],
       coord: `${player.playerCoords[1]},${player.playerCoords[0] + 1}`,
     },
   };
+
+  const doorCoords = [
+    {
+      currentCoords: `${moveDirection[player.playerDirection].coord},${indexMap}`,
+      newRoomIndex: 1,
+    },
+    {
+      currentCoords: `${moveDirection[player.playerDirection].coord},${indexMap}`,
+      newRoomIndex: 0,
+    },
+  ];
 
   const inputHandler = (key: KeyboardEvent) => {
     if (tempGameMap) {
@@ -139,7 +153,25 @@ const Porjec2 = () => {
           }
           break;
         case ' ':
-          doAttac();
+          if (moveDirection[player.playerDirection].tile !== '#') {
+            doAttac();
+          }
+          if (moveDirection[player.playerDirection].tile === ':') {
+            const door = doorCoords
+              .filter((room) => {
+                return (
+                  room.currentCoords ===
+                  `${moveDirection[player.playerDirection].coord},${indexMap}`
+                );
+              })
+              .map((e) => e.newRoomIndex);
+            console.log(door);
+            setIndexMap(door[1]);
+            /*
+              choose a map to place the player on based on the coordinates of the door.
+              also need to figure out how to draw different maps
+            */
+          }
           break;
       }
     }

@@ -7,4 +7,4 @@ export type Action =
   | { type: 'SET_SELECTED_PROJECT'; selectedProject: Project }
   | { type: 'UPDATE_PLAYER_COORDS'; updatePlayerCoords: [number, number] }
   | { type: 'UPDATE_PLAYER_DIRECTION'; updatePlayerDirection: PlayerDirection }
-  | { type: 'UPDATE_MAP'; updateMap: string[][] };
+  | { type: 'UPDATE_MAP'; updateMap: string[][][] };
