@@ -16,50 +16,7 @@ int pause() {
     return std::cin.get();
 } // should not be used except for maybe debugging
 
-std::string words[100] = {
-    "test",
-    "words",
-    "begin",
-    "start",
-    "loop",
-    "integer",
-    "string",
-    "initialize",
-    "testing",
-    "word",
-    "started",
-    "what",
-    "is",
-    "the",
-    "point",
-    "of",
-    "this",
-    "thing",
-    "application",
-    "stuff",
-    "end"
-};
-
 int main(int argc, char** argv) {
-    /*
-    bool testrun = true;
-    while (testrun) {
-        if (GetAsyncKeyState(VK_ESCAPE) != 0)
-            testrun = false;
-
-        std::cout << " " << words[rand() % 19];
-    }
-
-    pause();
-
-    return 0;
-    */
-
-
-
-
-
-
     _setmode(_fileno(stdout), _O_U16TEXT);
 
     try {
