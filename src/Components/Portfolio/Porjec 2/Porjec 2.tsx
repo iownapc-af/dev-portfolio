@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../Store/AppState';
 import { defaultState } from '../../../Store/reducer';
 import { PlayerDirection } from '../../../types/PlayerAction';
 import Map, { ReturnMapTile, doorCoords } from './Map';
-import NPC from './NPC';
+// import NPC from './NPC';
 import './Porjec 2.scss';
 
 export type Directions = 'north' | 'south' | 'east' | 'west';
@@ -24,7 +24,10 @@ const Porjec2 = () => {
 
   useEffect(() => {
     setInterval(() => {
-      NPC.updateAI();
+      // NPC.updateAI();
+
+      const tempIndexMap = indexMap;
+      dispatch({ type: 'UPDATE_INDEX_MAP', updateIndexMap: tempIndexMap });
     }, 750);
   }, []);
 

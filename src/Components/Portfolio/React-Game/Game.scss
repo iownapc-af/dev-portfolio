@@ -1,0 +1,49 @@
+.game-render-wrapper {
+    display: relative;
+    margin: 25px auto;
+    width: 800px;
+    height: 600px;
+}
+
+.game-render-window {
+    position: absolute;
+    width: 800px;
+    height: 600px;
+    background-color: gray;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.game-player {
+    background: url("./res/moon.png") no-repeat;
+    background-size: 24px;
+    height: 24px;
+    width: 24px;
+    animation: bob 5s linear infinite;
+
+    &.north {
+        transform: rotateZ(180deg);
+    }
+
+    &.south {
+    }
+
+    &.east {
+        transform: rotateZ(270deg);
+    }
+
+    &.west {
+        transform: rotateZ(90deg);
+    }
+}
+
+@keyframes bob {
+    0% {}
+    50% {
+        // background-size: 300px;
+        // height: 300px;
+        // width: 300px;
+        translate: 10%, 0;
+    }
+    100% {}
+}

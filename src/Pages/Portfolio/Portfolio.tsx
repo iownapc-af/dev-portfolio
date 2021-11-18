@@ -1,4 +1,5 @@
 import Porjec2 from '../../Components/Portfolio/Porjec 2/Porjec 2';
+import ReactGame from '../../Components/Portfolio/React-Game/Game';
 import Soteria from '../../Components/Portfolio/Soteria/Soteria';
 import { AppState, useAppDispatch, useAppSelector } from '../../Store/AppState';
 import { Project } from '../../types/Tab';
@@ -18,6 +19,8 @@ const Portfolio = () => {
         return <Soteria />;
       case 'porjec 2':
         return <Porjec2 />;
+      case 'porky-mon':
+        return <ReactGame />;
     }
   };
 

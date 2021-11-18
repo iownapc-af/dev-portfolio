@@ -18,7 +18,7 @@ interface State {
 
 export const defaultState: State = {
   tabSelected: 'portfolio',
-  selectedProject: 'porjec 2',
+  selectedProject: 'porky-mon',
 
   indexMap: 0,
   overworld: [
