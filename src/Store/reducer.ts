@@ -6,6 +6,7 @@ interface State {
   tabSelected: Tab;
   selectedProject: string | null;
 
+  indexMap: number;
   overworld: string[][][];
   rooms: string[][][];
 
@@ -19,14 +20,15 @@ export const defaultState: State = {
   tabSelected: 'portfolio',
   selectedProject: 'porjec 2',
 
+  indexMap: 0,
   overworld: [
     [
       '##################################################'.split(''),
       '#                                                #'.split(''),
-      '#   #######           #                          #'.split(''),
-      '#   #     #    #                                 #'.split(''),
-      '#   #     #                                      #'.split(''),
-      '#   ###:###    #                                 #'.split(''),
+      '#    11111            #                          #'.split(''),
+      '#   1111111    #                                 #'.split(''),
+      '#   1111111                                      #'.split(''),
+      '#   111:111    #                                 #'.split(''),
       '#                                                #'.split(''),
       '#                                                #'.split(''),
       '#                        :                       #'.split(''),
@@ -56,7 +58,7 @@ export const defaultState: State = {
       '#                                                #'.split(''),
       '#                                                #'.split(''),
       '#                                                #'.split(''),
-      '##################################################'.split(''),
+      '#########################:########################'.split(''),
     ],
     [
       '##################################################'.split(''),
@@ -135,6 +137,11 @@ export const Reducer = (state: State = defaultState, action: Action): State => {
       return {
         ...state,
         overworld: action.updateMap,
+      };
+    case 'UPDATE_INDEX_MAP':
+      return {
+        ...state,
+        indexMap: action.updateIndexMap,
       };
     default:
       return state;

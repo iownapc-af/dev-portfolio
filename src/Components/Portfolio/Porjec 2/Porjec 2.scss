@@ -23,8 +23,20 @@
     display: flex;
 }
 
-.wall {
+.border {
     background-color: black;
+}
+
+.wall {
+    background-color: orange;
+}
+
+.enemy {
+    &::before {
+        position: absolute;
+        transform: translateX(-50%);
+        content: '🌚';
+    }
 }
 
 .door {
@@ -36,10 +48,6 @@
         position: absolute;
         transform: translateX(-50%);
         content: '🌝';
-    }
-
-    &:hover {
-        background-color: black;
     }
 
     &.north {

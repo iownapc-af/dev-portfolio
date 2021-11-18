@@ -6,6 +6,9 @@
     
     text-align: center;
     position: relative;
+    width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
 
     scrollbar-color: #2aa198 transparent;
     scrollbar-width: thin;

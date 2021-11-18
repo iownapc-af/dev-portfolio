@@ -1,10 +1,9 @@
 @import '../../../Colors.scss';
 
 .header-nav {
-    display: flex;
+    display: flex-end;
     height: 100%;
     width: 500px;
-    align-items: end;
 
   .header-nav-buttons {
     display: inline-flex;

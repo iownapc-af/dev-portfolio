@@ -7,7 +7,7 @@ import App from './App';
 import { Reducer, defaultState } from './Store/reducer';
 
 export type AppState = ReturnType<typeof Reducer>;
-const store = createStore(Reducer, defaultState);
+export const store = createStore(Reducer, defaultState);
 
 ReactDOM.render(
   <React.StrictMode>

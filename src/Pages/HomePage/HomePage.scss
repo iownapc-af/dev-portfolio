@@ -1,10 +1,5 @@
 @import '../../Colors.scss';
 
-.App {
-    @include color-theme('background-color', 'html-background');
-    width: 100vw;
-}
-
 .content-head {
     display: block;
     margin: 20px auto 0 auto;
