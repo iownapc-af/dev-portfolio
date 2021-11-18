@@ -2,13 +2,6 @@ import { AppState } from '../../..';
 import { useAppDispatch, useAppSelector } from '../../../Store/AppState';
 import { npcList } from './NPC';
 
-export const CheckIfLegalMove = (indexMap: number, indexY: number, indexX: number) => {
-  const gameMap = useAppSelector((state: AppState) => state.overworld);
-
-  if (gameMap[indexMap][indexY][indexX] === ' ') return true;
-  return false;
-};
-
 export const ReturnMapTile = (indexMap: number, indexY: number, indexX: number) => {
   const gameMap = useAppSelector((state: AppState) => state.overworld);
 
@@ -74,15 +67,17 @@ const Map = () => {
     }
   };
 
-  const tidify = (indexX: number, indexY: number) => {
+  const renderNPC = (indexX: number, indexY: number) => {
     for (let npc = 0; npc < npcList.length; npc++) {
-      if (JSON.stringify(npcList[npc].coords) === JSON.stringify([indexY, indexX, indexMap])) {
-        // if direction up the down tile is reset
-        // if direction down the up tile is reset
-        // if direction up the down tile is reset
-        // if direction up the down tile is reset
-        gameMap[indexMap][indexY][indexX] = 'x';
-        dispatch({ type: 'UPDATE_MAP', updateMap: gameMap });
+      if (
+        JSON.stringify(npcList[npc].coords) === JSON.stringify([indexY, indexX, indexMap]) &&
+        gameMap[indexMap][indexY][indexX] !== 'x'
+      ) {
+        const gameMAP = [...gameMap];
+
+        gameMAP[indexMap][npcList[npc].preCoords[0]][npcList[npc].preCoords[1]] = ' ';
+        gameMAP[indexMap][indexY][indexX] = 'x';
+        dispatch({ type: 'UPDATE_MAP', updateMap: gameMAP });
       }
     }
 
@@ -96,7 +91,7 @@ const Map = () => {
           return (
             <div className="gridRow" key={`${indexY - 1} d`}>
               {row.map((column: unknown, indexX: number) => {
-                return tidify(indexX, indexY);
+                return renderNPC(indexX, indexY);
               })}
             </div>
           );

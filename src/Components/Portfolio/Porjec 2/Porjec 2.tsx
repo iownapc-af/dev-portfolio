@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { AppState } from '../../..';
 import { useAppDispatch, useAppSelector } from '../../../Store/AppState';
+import { defaultState } from '../../../Store/reducer';
 import { PlayerDirection } from '../../../types/PlayerAction';
 import Map, { ReturnMapTile, doorCoords } from './Map';
 import NPC from './NPC';
@@ -25,7 +26,7 @@ const Porjec2 = () => {
     setInterval(() => {
       NPC.updateAI();
     }, 750);
-  });
+  }, []);
 
   let timeoutID: NodeJS.Timeout;
   const doAttac = () => {
@@ -63,6 +64,10 @@ const Porjec2 = () => {
   const inputHandler = (key: KeyboardEvent) => {
     switch (key.key.toLowerCase()) {
       // check if movedirection tile is an entity
+      case 'escape':
+        dispatch({ type: 'RESET_GAME' });
+        dispatch({ type: 'UPDATE_MAP', updateMap: defaultState.overworld });
+        break;
 
       case 'w':
         dispatch({ type: 'UPDATE_PLAYER_DIRECTION', updatePlayerDirection: 'north' });

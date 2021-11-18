@@ -107,6 +107,9 @@ export const defaultState: State = {
 // eslint-disable-next-line @typescript-eslint/default-param-last
 export const Reducer = (state: State = defaultState, action: Action): State => {
   switch (action.type) {
+    case 'RESET_GAME':
+      return defaultState;
+
     case 'SET_TAB_SELECTED':
       return {
         ...state,
