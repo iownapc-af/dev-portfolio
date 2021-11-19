@@ -19,31 +19,23 @@
     background-size: 24px;
     height: 24px;
     width: 24px;
-    animation: bob 5s linear infinite;
 
     &.north {
-        transform: rotateZ(180deg);
+        animation: north 2s forwards;
+        // transform: rotateZ(180deg);
     }
 
     &.south {
+        animation: south 2s forwards ;
     }
 
     &.east {
-        transform: rotateZ(270deg);
+        animation: east 2s forwards ;
+        // transform: rotateZ(270deg);
     }
 
     &.west {
-        transform: rotateZ(90deg);
+        animation: west 2s forwards ;
+        // transform: rotateZ(90deg);
     }
-}
-
-@keyframes bob {
-    0% {}
-    50% {
-        // background-size: 300px;
-        // height: 300px;
-        // width: 300px;
-        translate: 10%, 0;
-    }
-    100% {}
 }
