@@ -21,21 +21,17 @@
     width: 24px;
 
     &.north {
-        animation: north 2s forwards;
-        // transform: rotateZ(180deg);
+        transform: rotateZ(180deg);
     }
 
     &.south {
-        animation: south 2s forwards ;
     }
 
     &.east {
-        animation: east 2s forwards ;
-        // transform: rotateZ(270deg);
+        transform: rotateZ(270deg);
     }
 
     &.west {
-        animation: west 2s forwards ;
-        // transform: rotateZ(90deg);
+        transform: rotateZ(90deg);
     }
 }
