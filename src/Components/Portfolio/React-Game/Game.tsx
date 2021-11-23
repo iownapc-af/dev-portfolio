@@ -3,6 +3,7 @@ import { GameEngine } from './Engine';
 import './Game.scss';
 import { Movement } from './Systems/Movement';
 import { Player } from './Entities/Player';
+import { EntityHandler } from './Systems/EntityHandler';
 
 export default class ReactGame extends PureComponent {
   render() {
@@ -11,11 +12,12 @@ export default class ReactGame extends PureComponent {
         <GameEngine
           className="game-render-window"
           systems={[Movement]}
-          entities={{ Player: { x: 0, y: 0, direction: 'south', renderer: <Player /> } }}
+          entities={{
+            Player: { renderer: <Player x={0} y={0} direction="south" /> },
+            EntityHandler: { renderer: <EntityHandler /> },
+          }}
         />
       </div>
     );
   }
 }
-
-// export default ReactGame;
