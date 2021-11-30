@@ -85,10 +85,12 @@ const MapBuilder = () => {
       iterate through map array to get the tile to place
       render the game
     */
-    if (checkCollision(0, 0)) console.log('uh');
+    mapList[0].map((y) => console.log());
+
+    return <></>;
   };
 
-  return buildMap;
+  return buildMap();
 };
 
 export { MapBuilder, checkCollision };

@@ -4,6 +4,7 @@ import './Game.scss';
 import { Movement } from './Systems/Movement';
 import { Player } from './Entities/Player';
 import { EntityHandler } from './Systems/EntityHandler';
+import { MapBuilder } from './Systems/MapBuilder';
 
 export default class ReactGame extends PureComponent {
   render() {
@@ -15,6 +16,7 @@ export default class ReactGame extends PureComponent {
           entities={{
             Player: { renderer: <Player x={0} y={0} direction="south" /> },
             EntityHandler: { renderer: <EntityHandler /> },
+            MapBuilder: { renderer: <MapBuilder /> },
           }}
         />
       </div>
