@@ -1,6 +1,6 @@
 // import { PureComponent } from 'react';
 import { useEffect } from 'react';
-import { npcList } from '../../Porjec 2/NPC';
+// import { npcList } from '../../Porjec 2/NPC';
 import NPC from '../Entities/NPC';
 
 const entityList = [
@@ -14,43 +14,31 @@ const entityList = [
     id: 1,
     entityType: 'npc',
     x: 80,
-    y: 0,
+    y: 40,
   },
   {
     id: 2,
     entityType: 'npc',
-    x: 0,
-    y: 80,
+    x: 40,
+    y: 258,
   },
   {
     id: 3,
     entityType: 'npc',
     x: 20,
-    y: 80,
+    y: 580,
   },
   {
     id: 4,
     entityType: 'npc',
     x: 200,
-    y: 80,
+    y: 160,
   },
   {
     id: 5,
     entityType: 'npc',
     x: 320,
-    y: 80,
-  },
-  {
-    id: 6,
-    entityType: 'npc',
-    x: 380,
-    y: 80,
-  },
-  {
-    id: 7,
-    entityType: 'npc',
-    x: 300,
-    y: 80,
+    y: 50,
   },
 ];
 
@@ -67,24 +55,24 @@ const EntityHandler = () => {
 
     switch (moveDirection) {
       case 0: // up
-        if (entityList[entity].y - 18 > 0) {
+        if (entityList[entity].y - 18 > 40) {
           entityList[entity].y -= 18;
         } else {
-          entityList[entity].y = 0;
+          entityList[entity].y = 40;
         }
         break;
       case 1: // down
         if (entityList[entity].y - 18 < 554) {
           entityList[entity].y += 18;
         } else {
-          entityList[entity].y = 578;
+          entityList[entity].y = 548;
         }
         break;
       case 2: // left
-        if (entityList[entity].x - 18 > 0) {
+        if (entityList[entity].x - 18 > 40) {
           entityList[entity].x -= 18;
         } else {
-          entityList[entity].x = 0;
+          entityList[entity].x = 40;
         }
         break;
       case 3: // right
@@ -103,12 +91,10 @@ const EntityHandler = () => {
   };
 
   const entityBuilder = () => {
-    // eslint-disable-next-line guard-for-in
+    // if (entityList.length < 1) HELLAFROGS();
     return (
       <>
         {entityList.map((entity) => {
-          // entityMovement(entity.id);
-
           return <NPC x={entity.x} y={entity.y} key={entity.id} />;
         })}
       </>

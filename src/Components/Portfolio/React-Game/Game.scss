@@ -1,44 +1,98 @@
 .game-render-wrapper {
-    display: relative;
-    margin: 25px auto;
-    width: 800px;
-    height: 600px;
+  display: relative;
+  margin: 25px auto;
+  width: 800px;
+  height: 600px;
 }
 
 .game-render-window {
-    position: absolute;
-    width: 800px;
-    height: 600px;
-    background-color: gray;
-    border-radius: 5px;
-    overflow: hidden;
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  background-color: gray;
+  border-radius: 5px;
+  overflow: hidden;
 }
 
 .game-player {
-    background: url("./res/moon.png") no-repeat;
-    background-size: 24px;
-    height: 24px;
-    width: 24px;
+  background: url("./res/trashpanda.png") no-repeat;
+  background-size: 20px;
+  object-fit: cover;
+  height: 20px;
+  width: 20px;
 
-    &.north {
-        transform: rotateZ(180deg);
-    }
+  &.north {
+    transform: rotateZ(180deg);
+  }
 
-    &.south {
-    }
+  // &.south {
+  // }
 
-    &.east {
-        transform: rotateZ(270deg);
-    }
+  &.east {
+    transform: rotateZ(270deg);
+  }
 
-    &.west {
-        transform: rotateZ(90deg);
-    }
+  &.west {
+    transform: rotateZ(90deg);
+  }
 }
 
 .game-npc {
-  background: url("./res/frog.png") no-repeat;
-  background-size: 24px;
-  height: 24px;
-  width: 24px;
+  height: 20px;
+  width: 20px;
+  
+  &:nth-child(2n) {
+    background: url("./res/frog.png") no-repeat;
+    background-size: 20px;
+    animation: pop 0.7s infinite;
+  }
+
+  &:nth-child(odd) {
+    background: url("./res/harabme.png") no-repeat;
+    background-size: 20px;
+    animation: pop2 0.5s infinite;
+  }
+
+  &:nth-child(3n) {
+    background: url("./res/squidgames.png") no-repeat;
+    background-size: 20px;
+    animation: pop3 0.9s infinite;
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: translate(-50%, -50%) scale(1.25, 0.75);
+  }
+  50% {
+    transform: translate(-50%, -150%) scale(1, 1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.25, 0.75);
+  }
+}
+
+@keyframes pop2 {
+  0% {
+    transform: translate(-10%, -10%) scale(1, 1);
+  }
+  50% {
+    transform: translate(10%, 10%) scale(1.25, 0.75);
+  }
+  100% {
+    transform: translate(-10%, -10%) scale(1, 1);
+  }
+}
+
+
+@keyframes pop3 {
+  0% {
+    transform: translate(-75%, -125%) scale(1, 1);
+  }
+  50% {
+    transform: translate(-75%, -75%) scale(1.5, 0.75);
+  }
+  100% {
+    transform: translate(-75%, -125%) scale(1, 1);
+  }
 }
