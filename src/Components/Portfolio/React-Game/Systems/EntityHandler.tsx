@@ -8,10 +8,12 @@ const EntityHandler = () => {
   const [npcList, setNPCList] = useState<NPCtype[]>([]);
 
   useEffect(() => {
-    getAllNPCs().then((res) => {
-      setNPCList(res);
-    });
-  });
+    setInterval(() => {
+      getAllNPCs().then((res) => {
+        setNPCList(res);
+      });
+    }, 500);
+  }, []);
 
   const entityBuilder = () => {
     return (

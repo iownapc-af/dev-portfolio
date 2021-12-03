@@ -51,19 +51,19 @@
   &:nth-child(2n) {
     background: url("./res/frog.png") no-repeat;
     background-size: 20px;
-    animation: pop 0.7s infinite;
+    // animation: pop 0.7s infinite;
   }
 
   &:nth-child(odd) {
     background: url("./res/harabme.png") no-repeat;
     background-size: 20px;
-    animation: pop2 0.5s infinite;
+    // animation: pop2 0.5s infinite;
   }
 
   &:nth-child(3n) {
     background: url("./res/squidgames.png") no-repeat;
     background-size: 20px;
-    animation: pop3 0.9s infinite;
+    // animation: pop3 0.9s infinite;
   }
 }
 
@@ -84,7 +84,7 @@
     transform: translate(-10%, -10%) scale(1, 1);
   }
   50% {
-    transform: translate(10%, 10%) scale(1.25, 0.75);
+    transform: translate(-10%, 10%) scale(1.25, 0.75);
   }
   100% {
     transform: translate(-10%, -10%) scale(1, 1);

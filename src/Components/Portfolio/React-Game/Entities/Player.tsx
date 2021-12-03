@@ -12,7 +12,7 @@ class Player extends PureComponent<PlayerProps> {
   render() {
     const playerEntity = {
       direction: this.props.direction,
-      coords: [this.props.x, this.props.y],
+      coords: [this.props.x || 20, this.props.y || 20],
     };
 
     return (

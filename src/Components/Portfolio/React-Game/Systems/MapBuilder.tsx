@@ -19,7 +19,7 @@ import { getMapContents } from '../clients/mapClient';
 const MapBuilder = () => {
   const [map, setMap] = useState<String[][]>([]);
 
-  useEffect(() => {
+  const initializeMap = () => {
     getMapContents().then((res) => {
       const tempMap: string[][] = res.map((str) => {
         return str.split('');
@@ -27,9 +27,13 @@ const MapBuilder = () => {
 
       setMap(tempMap);
     });
-  });
+  };
 
   const buildMap = () => {
+    if (map.length === 0) {
+      initializeMap();
+    }
+
     return (
       <>
         {map?.map((row, indexY) => {

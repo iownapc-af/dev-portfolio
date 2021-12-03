@@ -38,8 +38,6 @@ const Movement = (entities: any, { input }: any) => {
         break;
       case 'a' || 'arrowleft':
         playerMovement.direction = 'west';
-
-        // if (checkOutOfBounds('west') && checkCollision(playerMovement.x - 20, playerMovement.y)) {
         playerMovement.x -= 20;
         // } else {
         //   playerMovement.x = 20;
@@ -48,8 +46,6 @@ const Movement = (entities: any, { input }: any) => {
         break;
       case 'd' || 'arrowright':
         playerMovement.direction = 'east';
-
-        // if (checkCollision(playerMovement.x + 20, playerMovement.y)) {
         playerMovement.x += 20;
         // } else {
         //   playerMovement.x = 780;
