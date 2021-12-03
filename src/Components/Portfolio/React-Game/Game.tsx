@@ -14,7 +14,7 @@ export default class ReactGame extends PureComponent {
           className="game-render-window"
           systems={[Movement]}
           entities={{
-            Player: { renderer: <Player x={0} y={0} direction="south" /> },
+            Player: { renderer: <Player x={20} y={20} direction="south" /> },
             EntityHandler: { renderer: <EntityHandler /> },
             MapBuilder: { renderer: <MapBuilder /> },
           }}

@@ -1,96 +1,54 @@
-const mapList = [
-  [
-    '########################################'.split(''),
-    '#  #                                   #'.split(''),
-    '#   #     #####                        #'.split(''),
-    '#    #                                 #'.split(''),
-    '#     #                                #'.split(''),
-    '#      #                               #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '########################################'.split(''),
-  ],
-  [
-    '########################################'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '#                                      #'.split(''),
-    '########################################'.split(''),
-  ],
-];
-
-const tileSize = 20;
+import { useEffect, useState } from 'react';
+import { getMapContents } from '../clients/mapClient';
 
 // collision detection
-const checkCollision = (_tileX: number, _tileY: number) => {
-  // get tile position based on coordinates
-  const mapTileX = _tileX / tileSize - 1;
-  const mapTileY = _tileY / tileSize - 1;
+// const checkCollision = (_tileX: number, _tileY: number) => {
+//   const longstringthing = mapList[1].join().replaceAll(',', '');
+//   console.log(longstringthing);
+//   // get tile position based on coordinates
+//   const mapTileX = _tileX / tileSize;
+//   const mapTileY = _tileY / tileSize;
 
-  console.log(mapTileX, ',', mapTileY);
+//   console.log(mapTileX, mapTileY, mapList[0][mapTileY][mapTileX]);
 
-  // if (mapList[0][mapTileY][mapTileX] === ' ') return true;
+//   if (mapList[0][mapTileY][mapTileX] === ' ') return true;
 
-  return false;
-};
+//   return false;
+// };
 
 const MapBuilder = () => {
-  const buildMap = () => {
-    /*
-      get map to build
-      iterate through map array to get the tile to place
-      render the game
-    */
-    mapList[0].map((y) => console.log());
+  const [map, setMap] = useState<String[][]>([]);
 
-    return <></>;
+  useEffect(() => {
+    getMapContents().then((res) => {
+      const tempMap: string[][] = res.map((str) => {
+        return str.split('');
+      });
+
+      setMap(tempMap);
+    });
+  });
+
+  const buildMap = () => {
+    return (
+      <>
+        {map?.map((row, indexY) => {
+          return row.map((column: unknown, indexX: number) => {
+            if (map[indexY][indexX] === '#') {
+              return (
+                <div className="square" style={{ top: indexY * 20, left: indexX * 20 }}>
+                  {' '}
+                </div>
+              );
+            }
+            return <></>;
+          });
+        })}
+      </>
+    );
   };
 
   return buildMap();
 };
 
-export { MapBuilder, checkCollision };
+export { MapBuilder };

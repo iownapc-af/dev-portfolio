@@ -9,20 +9,6 @@ interface PlayerProps {
 }
 
 class Player extends PureComponent<PlayerProps> {
-  // movePlayer(x: number, y: number, direction: string) {
-  //   switch (direction) {
-  //     case 'north':
-  //       this.playerEntity.direction = 'north';
-
-  //       if (this.playerEntity.coords[1] - 18 > 0) {
-  //         this.playerEntity.coords[1] -= 18;
-  //       } else {
-  //         this.playerEntity.coords[1] = 0;
-  //       }
-  //       break;
-  //   }
-  // }
-
   render() {
     const playerEntity = {
       direction: this.props.direction,
