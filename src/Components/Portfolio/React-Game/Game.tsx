@@ -2,9 +2,9 @@ import { PureComponent } from 'react';
 import { GameEngine } from './Engine';
 import './Game.scss';
 import { Movement } from './Systems/Movement';
-import { Player } from './Entities/Player';
 import { EntityHandler } from './Systems/EntityHandler';
 import { MapBuilder } from './Systems/MapBuilder';
+import { PlayerRender } from './Entities/Player';
 
 export default class ReactGame extends PureComponent {
   render() {
@@ -15,7 +15,8 @@ export default class ReactGame extends PureComponent {
           systems={[Movement]}
           entities={{
             MapBuilder: { renderer: <MapBuilder /> },
-            Player: { renderer: <Player x={20} y={20} direction="south" /> },
+            PlayerRender: { renderer: <PlayerRender x={20} y={20} direction="south" /> },
+            // PlayerHandler: { renderer: <PlayerHandler /> },
             EntityHandler: { renderer: <EntityHandler /> },
           }}
         />

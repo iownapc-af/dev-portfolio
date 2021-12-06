@@ -1,61 +1,28 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { useEffect } from 'react';
+import { PlayerType } from '../../../../types/gametypes';
+import { getPlayer } from '../clients/playerClient';
+
 // eslint-disable
 const Movement = (entities: any, { input }: any) => {
   const { payload } = input.find((x: any) => x.name === 'onKeyDown') || {};
-  const playerMovement = entities.Player;
+  // const [player, setPlayer] = useState<PlayerType>();
 
-  const checkValidPlayerInitialCoordinates = () => {
-    if (playerMovement.y === undefined) {
-      playerMovement.y = 20;
-    }
-
-    if (playerMovement.x === undefined) {
-      playerMovement.x = 20;
-    }
-  };
+  const playerAction = entities.PlayerRender;
 
   if (payload) {
-    checkValidPlayerInitialCoordinates();
-
-    switch (payload.key.toLowerCase()) {
-      case 'w' || 'ArrowUp':
-        playerMovement.direction = 'north';
-        playerMovement.y -= 20;
-
-        // } else {
-        //   playerMovement.y = 0;
-        // }
-
-        break;
-      case 's' || 'arrowdown':
-        playerMovement.direction = 'south';
-
-        playerMovement.y += 20;
-        // } else {
-        //   playerMovement.y = 580;
-        // }
-
-        break;
-      case 'a' || 'arrowleft':
-        playerMovement.direction = 'west';
-        playerMovement.x -= 20;
-        // } else {
-        //   playerMovement.x = 20;
-        // }
-
-        break;
-      case 'd' || 'arrowright':
-        playerMovement.direction = 'east';
-        playerMovement.x += 20;
-        // } else {
-        //   playerMovement.x = 780;
-        // }
-
-        break;
-      default:
-        break;
-    }
+    getPlayer(payload.key).then((res) => {
+      updatePlayer(res);
+      // setPlayer(res);
+    });
   }
+
+  const updatePlayer = (player: PlayerType) => {
+    playerAction.direction = player.direction;
+    playerAction.x = player.xcoordinate;
+    playerAction.y = player.ycoordinate;
+  };
 
   return entities;
 };

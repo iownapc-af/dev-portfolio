@@ -4,3 +4,11 @@ export interface NPCtype {
   xcoordinate: number;
   ycoordinate: number;
 }
+
+export interface PlayerType {
+  id: string;
+  name: string;
+  direction: string;
+  xcoordinate: number;
+  ycoordinate: number;
+}
