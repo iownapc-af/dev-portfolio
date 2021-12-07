@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { PlayerType } from '../../../../types/gametypes';
 import { getPlayer } from '../clients/playerClient';
-import { PlayerRender } from '../Entities/Player';
+import { PlayerRender } from '../Entities/PlayerRender';
 import '../Game.scss';
 
 const PlayerHandler = () => {

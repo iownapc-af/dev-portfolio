@@ -37,25 +37,18 @@
   }
 }
 
-.square {
-  position: absolute;
-  background-color: orange;
-  width: 20px;
-  height: 20px;
-}
-
 .game-npc {
   height: 20px;
   width: 20px;
   
   &:nth-child(2n) {
-    background: url("./res/frog.png") no-repeat;
+    background: url("./res/tutle.png") no-repeat;
     background-size: 20px;
     // animation: pop 0.7s infinite;
   }
 
   &:nth-child(odd) {
-    background: url("./res/harabme.png") no-repeat;
+    background: url("./res/dad.png") no-repeat;
     background-size: 20px;
     // animation: pop2 0.5s infinite;
   }

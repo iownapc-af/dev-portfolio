@@ -38,12 +38,37 @@ const MapBuilder = () => {
       <>
         {map?.map((row, indexY) => {
           return row.map((column: unknown, indexX: number) => {
-            if (map[indexY][indexX] === '#') {
-              return (
-                <div className="square" style={{ top: indexY * 20, left: indexX * 20 }}>
-                  {' '}
-                </div>
-              );
+            switch (map[indexY][indexX]) {
+              case '#':
+                return (
+                  <div className="square" style={{ top: indexY * 20, left: indexX * 20 }}>
+                    {' '}
+                  </div>
+                );
+              case ':':
+                return (
+                  <div className="door" style={{ top: indexY * 20, left: indexX * 20 }}>
+                    {' '}
+                  </div>
+                );
+              case ',':
+                return (
+                  <div className="grass" style={{ top: indexY * 20, left: indexX * 20 }}>
+                    {' '}
+                  </div>
+                );
+              case '.':
+                return (
+                  <div className="flower" style={{ top: indexY * 20, left: indexX * 20 }}>
+                    {' '}
+                  </div>
+                );
+              case 'W':
+                return (
+                  <div className="wall" style={{ top: indexY * 20, left: indexX * 20 }}>
+                    {' '}
+                  </div>
+                );
             }
             return <></>;
           });

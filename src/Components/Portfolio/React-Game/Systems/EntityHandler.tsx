@@ -12,7 +12,7 @@ const EntityHandler = () => {
       getAllNPCs().then((res) => {
         setNPCList(res);
       });
-    }, 500);
+    }, 200);
   }, []);
 
   const entityBuilder = () => {

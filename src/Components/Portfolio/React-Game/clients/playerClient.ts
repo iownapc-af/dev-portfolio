@@ -3,6 +3,6 @@ import { PlayerType } from '../../../../types/gametypes';
 
 export const getPlayer = (key: string): Promise<PlayerType> => {
   return axios.put(`http://localhost:8080/api/player/${key}`).then((res) => {
-    return res.data.player;
+    return res.data;
   });
 };

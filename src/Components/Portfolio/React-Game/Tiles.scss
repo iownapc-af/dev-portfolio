@@ -1,0 +1,39 @@
+.square {
+  position: absolute;
+  background: url("./res/broccoli.png") no-repeat;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.wall {
+  position: absolute;
+  background: url("./res/wall.png") no-repeat;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.door {
+  position: absolute;
+  background: url("./res/door.png") no-repeat;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.grass {
+  position: absolute;
+  background: url("./res/grass.png") no-repeat;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.flower {
+  position: absolute;
+  background: url("./res/flower.png") no-repeat;
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+}
