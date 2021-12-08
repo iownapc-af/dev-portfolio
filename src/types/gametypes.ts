@@ -3,6 +3,7 @@ export interface NPCtype {
   name: string;
   xcoordinate: number;
   ycoordinate: number;
+  mapId: number;
 }
 
 export interface PlayerType {
@@ -11,4 +12,15 @@ export interface PlayerType {
   direction: string;
   xcoordinate: number;
   ycoordinate: number;
+  map: {
+    mapId: number;
+    mapName: string;
+    mapContents: string[][];
+  };
+}
+
+export interface MapType {
+  mapId: number;
+  name: string;
+  mapContents: string[][];
 }

@@ -1,26 +1,18 @@
 import { useEffect, useState } from 'react';
 import { getMapContents } from '../clients/mapClient';
+import { getPlayer } from '../clients/playerClient';
 
-// collision detection
-// const checkCollision = (_tileX: number, _tileY: number) => {
-//   const longstringthing = mapList[1].join().replaceAll(',', '');
-//   console.log(longstringthing);
-//   // get tile position based on coordinates
-//   const mapTileX = _tileX / tileSize;
-//   const mapTileY = _tileY / tileSize;
-
-//   console.log(mapTileX, mapTileY, mapList[0][mapTileY][mapTileX]);
-
-//   if (mapList[0][mapTileY][mapTileX] === ' ') return true;
-
-//   return false;
-// };
-
-const MapBuilder = () => {
+const MapRenderer = () => {
   const [map, setMap] = useState<String[][]>([]);
 
-  const initializeMap = () => {
-    getMapContents().then((res) => {
+  useEffect(() => {
+    getPlayer('placeholder').then((res) => {
+      initializeMap(res.map.mapId);
+    });
+  }, []);
+
+  const initializeMap = (mapId: Number) => {
+    getMapContents(mapId).then((res) => {
       const tempMap: string[][] = res.map((str) => {
         return str.split('');
       });
@@ -30,9 +22,9 @@ const MapBuilder = () => {
   };
 
   const buildMap = () => {
-    if (map.length === 0) {
-      initializeMap();
-    }
+    // if (map.length === 0) {
+    //   initializeMap();
+    // }
 
     return (
       <>
@@ -80,4 +72,4 @@ const MapBuilder = () => {
   return buildMap();
 };
 
-export { MapBuilder };
+export { MapRenderer };

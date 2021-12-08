@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const getMapContents = (): Promise<String[]> => {
-  return axios.get('http://localhost:8080/api/map/0').then((res) => {
+export const getMapContents = (mapId: Number): Promise<String[]> => {
+  return axios.get(`http://localhost:8080/api/map/${mapId}`).then((res) => {
     return res.data.map;
   });
 };
