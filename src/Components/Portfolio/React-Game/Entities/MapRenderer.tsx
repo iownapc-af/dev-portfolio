@@ -6,9 +6,11 @@ const MapRenderer = () => {
   const [map, setMap] = useState<String[][]>([]);
 
   useEffect(() => {
-    getPlayer('placeholder').then((res) => {
-      initializeMap(res.map.mapId);
-    });
+    setInterval(() => {
+      getPlayer('placeholder').then((res) => {
+        initializeMap(res.map.mapId);
+      });
+    }, 1000);
   }, []);
 
   const initializeMap = (mapId: Number) => {

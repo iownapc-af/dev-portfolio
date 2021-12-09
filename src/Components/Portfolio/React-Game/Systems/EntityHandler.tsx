@@ -2,24 +2,36 @@
 import { useEffect, useState } from 'react';
 import { NPCtype } from '../../../../types/gametypes';
 import { getAllNPCs } from '../clients/npcClient';
+import { getPlayer } from '../clients/playerClient';
 import NPC from '../Entities/NPC';
 
 const EntityHandler = () => {
   const [npcList, setNPCList] = useState<NPCtype[]>([]);
+  const [playerMapId, setPlayerMapId] = useState<Number>();
 
   useEffect(() => {
     setInterval(() => {
-      getAllNPCs().then((res) => {
-        setNPCList(res);
+      getPlayer('placeholder').then((res) => {
+        setPlayerMapId(res.map.mapId);
       });
-    }, 200);
+
+      getAllNPCs().then((npcs) => {
+        setNPCList(npcs);
+      });
+    }, 750);
   }, []);
 
   const entityBuilder = () => {
+    console.log(npcList.map((entity) => entity.map.mapId === playerMapId));
+
     return (
       <>
         {npcList.map((entity) => {
-          return <NPC x={entity.xcoordinate} y={entity.ycoordinate} key={entity.id} />;
+          return entity.map.mapId === playerMapId ? (
+            <NPC x={entity.xcoordinate} y={entity.ycoordinate} key={entity.id} />
+          ) : (
+            <></>
+          );
         })}
       </>
     );
