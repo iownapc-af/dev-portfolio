@@ -1,4 +1,3 @@
-// import { PureComponent } from 'react';
 import { useEffect, useState } from 'react';
 import { NPCtype } from '../../../../types/gametypes';
 import { getAllNPCs } from '../clients/npcClient';
@@ -22,8 +21,6 @@ const EntityHandler = () => {
   }, []);
 
   const entityBuilder = () => {
-    console.log(npcList.map((entity) => entity.map.mapId === playerMapId));
-
     return (
       <>
         {npcList.map((entity) => {

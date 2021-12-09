@@ -8,10 +8,6 @@ const Movement = (entities: any, { input }: any) => {
 
   const playerAction = entities.PlayerRender;
 
-  // useEffect(() => {
-
-  // }, [payload]);
-
   if (payload) {
     if (payload.key === ' ') payload.key = 'spacebar';
     getPlayer(payload.key).then((res) => {

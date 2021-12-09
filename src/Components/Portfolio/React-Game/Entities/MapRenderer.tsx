@@ -10,7 +10,7 @@ const MapRenderer = () => {
       getPlayer('placeholder').then((res) => {
         initializeMap(res.map.mapId);
       });
-    }, 1000);
+    }, 500);
   }, []);
 
   const initializeMap = (mapId: Number) => {
