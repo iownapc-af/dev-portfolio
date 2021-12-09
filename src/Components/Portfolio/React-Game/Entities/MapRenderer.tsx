@@ -4,8 +4,16 @@ import { getPlayer } from '../clients/playerClient';
 
 const MapRenderer = () => {
   const [map, setMap] = useState<String[][]>([]);
+  const [noise, setNoise] = useState<number[]>([]);
 
   useEffect(() => {
+    const tempNoise: number[] = [];
+    for (let longloop = 0; longloop < 1201; longloop++) {
+      tempNoise.push(Math.floor(Math.random() * 4));
+    }
+
+    setNoise(tempNoise);
+
     setInterval(() => {
       getPlayer('placeholder').then((res) => {
         initializeMap(res.map.mapId);
@@ -24,36 +32,36 @@ const MapRenderer = () => {
   };
 
   const buildMap = () => {
-    // if (map.length === 0) {
-    //   initializeMap();
-    // }
-
     return (
       <>
         {map?.map((row, indexY) => {
           return row.map((column: unknown, indexX: number) => {
+            const treeType = noise[(indexX + 1) * (indexY + 1)];
             switch (map[indexY][indexX]) {
               case '#':
                 return (
-                  <div className="square" style={{ top: indexY * 20, left: indexX * 20 }}>
+                  <div
+                    className={`tile tree${treeType}`}
+                    style={{ top: indexY * 20, left: indexX * 20 }}
+                  >
                     {' '}
                   </div>
                 );
               case ':':
                 return (
-                  <div className="door" style={{ top: indexY * 20, left: indexX * 20 }}>
+                  <div className="tile door" style={{ top: indexY * 20, left: indexX * 20 }}>
                     {' '}
                   </div>
                 );
               case ',':
                 return (
-                  <div className="grass" style={{ top: indexY * 20, left: indexX * 20 }}>
+                  <div className="tile grass" style={{ top: indexY * 20, left: indexX * 20 }}>
                     {' '}
                   </div>
                 );
               case '.':
                 return (
-                  <div className="flower" style={{ top: indexY * 20, left: indexX * 20 }}>
+                  <div className="tile flower" style={{ top: indexY * 20, left: indexX * 20 }}>
                     {' '}
                   </div>
                 );

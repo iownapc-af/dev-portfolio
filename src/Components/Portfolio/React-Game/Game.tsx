@@ -18,7 +18,7 @@ export default class ReactGame extends PureComponent {
           entities={{
             MapRenderer: { renderer: <MapRenderer /> },
             PlayerRender: {
-              renderer: <PlayerRender x={20} y={20} direction="south" />,
+              renderer: <PlayerRender x={null} y={null} direction="south" />,
             },
             EntityHandler: { renderer: <EntityHandler /> },
           }}

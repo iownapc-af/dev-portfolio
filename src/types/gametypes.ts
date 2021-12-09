@@ -1,6 +1,7 @@
 export interface NPCtype {
   id: string;
   name: string;
+  type: string;
   xcoordinate: number;
   ycoordinate: number;
   map: {

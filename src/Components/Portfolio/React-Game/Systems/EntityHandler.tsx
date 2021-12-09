@@ -25,7 +25,7 @@ const EntityHandler = () => {
       <>
         {npcList.map((entity) => {
           return entity.map.mapId === playerMapId ? (
-            <NPC x={entity.xcoordinate} y={entity.ycoordinate} key={entity.id} />
+            <NPC x={entity.xcoordinate} y={entity.ycoordinate} key={entity.id} name={entity.type} />
           ) : (
             <></>
           );
