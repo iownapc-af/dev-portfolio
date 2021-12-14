@@ -22,6 +22,10 @@ export interface PlayerType {
     mapName: string;
     mapContents: string[][];
   };
+  health: number;
+  mana: number;
+  stamina: number;
+  // inventory: {}[];
 }
 
 export interface MapType {

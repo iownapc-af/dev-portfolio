@@ -67,7 +67,7 @@ const MapRenderer = () => {
                 );
               case 'W':
                 return (
-                  <div className="wall" style={{ top: indexY * 20, left: indexX * 20 }}>
+                  <div className="tile wall" style={{ top: indexY * 20, left: indexX * 20 }}>
                     {' '}
                   </div>
                 );

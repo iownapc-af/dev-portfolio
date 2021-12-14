@@ -7,6 +7,7 @@ import { Movement } from './Systems/Movement';
 import { EntityHandler } from './Systems/EntityHandler';
 import { PlayerRender } from './Entities/PlayerRender';
 import { MapRenderer } from './Entities/MapRenderer';
+import { Interface } from './Entities/Interface';
 
 export default class ReactGame extends PureComponent {
   render() {
@@ -18,11 +19,12 @@ export default class ReactGame extends PureComponent {
           entities={{
             MapRenderer: { renderer: <MapRenderer /> },
             PlayerRender: {
-              renderer: <PlayerRender x={null} y={null} direction="south" />,
+              renderer: <PlayerRender x={undefined} y={undefined} direction="south" />,
             },
             EntityHandler: { renderer: <EntityHandler /> },
           }}
         />
+        <Interface />
       </div>
     );
   }
